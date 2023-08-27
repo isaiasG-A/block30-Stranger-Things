@@ -1,10 +1,12 @@
 import { useState} from 'react'
+import { useNavigate} from "react-router-dom";
 
 
-function Login () {
+function Login ({ setToken, token }) {
 const [username, setUsername] = useState("");
 const [password, setPassword] = useState("");
 const [response, setResponse] = useState("");
+const navigate = useNavigate();
 
 async function loginRequest(event) {
   event.preventDefault();
@@ -25,12 +27,15 @@ async function loginRequest(event) {
       })
     })
     const result = await response.json();
-    console.log(result)
-    setResponse(result.error.message)
-    return result
+    const error = await result.error;
+    const token = await result.data.token;
+    console.log(token)
+    setToken(token);
+
+    error ? setResponse(error) : setResponse(result.data.message); 
+    token ? navigate("/usermenu") : null;
   } catch(error) {
-    console.log(error)
-  }
+console.log(error)  }
 }
 
   return (
