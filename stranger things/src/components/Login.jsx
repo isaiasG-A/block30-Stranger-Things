@@ -29,7 +29,6 @@ async function loginRequest(event) {
     const result = await response.json();
     const error = await result.error;
     const token = await result.data.token;
-    console.log(token)
     setToken(token);
 
     error ? setResponse(error) : setResponse(result.data.message); 
