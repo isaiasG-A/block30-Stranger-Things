@@ -13,8 +13,6 @@ function App() {
   
   return (
     <>
-    <Link to="/register">Register</Link>
-    <Link to="/login">Login</Link>
     <Routes>
       <Route path="/" element={<Posts />}/>
       <Route path="/register" element={<Register />}/>

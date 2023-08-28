@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function PostForm ({ token }) {
   const [title, setTitle] = useState();
@@ -40,6 +41,7 @@ function PostForm ({ token }) {
   }
   return (
     <>
+    <Link to="/usermenu">Menu</Link>
     <h2>Create Post</h2>
     <form onSubmit={makePost}>
       <label>

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function MyPosts({ token, logout }) {
-  const [getPosts, setGetPosts] = useState();
+  const [getPosts, setGetPosts] = useState([]);
 
   useEffect(() => {
     const COHORT_NAME = '2302-ACC-PT-WEB-PT-D';
@@ -17,7 +18,6 @@ function MyPosts({ token, logout }) {
           });
             const result = await response.json();
             setGetPosts(result.data.posts)
-            return result
         } catch(error) {
           console.log(error)
         }
@@ -27,8 +27,18 @@ function MyPosts({ token, logout }) {
 
   return (
     <>
+      <Link to="/">All posts</Link>
+      <Link to="/usermenu">Menu</Link>
+      <Link to="/createpost">Create Post</Link>
       <button onClick={logout}>Log Out</button>
-      {console.log(getPosts)}
+      {getPosts.map((post) => {
+       return <div>
+          <h2>{post.title}</h2>
+          <h4>{post.description}</h4>
+          <h6>{post.price}</h6>
+          <p>{post.createdAt}</p>
+        </div>
+      })}
     </>
   )
 }

@@ -1,5 +1,6 @@
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 function Posts () {
   const [posts, setPosts] = useState([]);
@@ -22,6 +23,8 @@ function Posts () {
 
   return (
     <>
+    <Link to="/register">Register</Link>
+    <Link to="/login">Login</Link>
       {
         posts.map((post) => {
          return <div key={post._id}>
