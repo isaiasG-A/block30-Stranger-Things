@@ -10,16 +10,19 @@ import PostForm from "./components/PostForm";
 
 function App() {
   const [token, setToken] = useState();
+
+  localStorage.setItem('access_token', `${token}`);
+  const accessToken = localStorage.getItem('access_token');
   
   return (
     <>
     <Routes>
       <Route path="/" element={<Posts />}/>
       <Route path="/register" element={<Register />}/>
-      <Route path="/login" element={<Login setToken={setToken} token={token} />}/>
-      <Route path="/usermenu" element={<UserMenu token={token} setToken={setToken} />}/>
-      <Route path="/myposts" element={<MyPosts token={token} />}/>
-      <Route path="/createpost" element={<PostForm token={token}/>}/>
+      <Route path="/login" element={<Login setToken={setToken} token={accessToken} />}/>
+      <Route path="/usermenu" element={<UserMenu token={accessToken} setToken={setToken} />}/>
+      <Route path="/myposts" element={<MyPosts token={accessToken} />}/>
+      <Route path="/createpost" element={<PostForm token={accessToken}/>}/>
     </Routes>
   </>
   )

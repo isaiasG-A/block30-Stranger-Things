@@ -32,7 +32,7 @@ function Posts () {
             <h3>{post.description}</h3>
             <h5>Author: {post.author.username}</h5>
             <h6>Created: {post.createdAt}</h6>
-            
+            <h6>Location: {post.location}</h6>
           </div>
         })
       }
