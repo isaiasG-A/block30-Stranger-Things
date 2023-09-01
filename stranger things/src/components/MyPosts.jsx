@@ -48,7 +48,7 @@ function MyPosts({ token, logout }) {
 
   return (
     <>
-      <Link to="/">All posts</Link>
+      <Link to="/posts">All posts</Link>
       <Link to="/usermenu">Menu</Link>
       <Link to="/createpost">Create Post</Link>
       <button onClick={logout}>Log Out</button>
