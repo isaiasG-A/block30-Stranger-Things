@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(" ");
 
   useEffect(() => {
     const COHORT_NAME = '2302-ACC-PT-WEB-PT-D';
@@ -21,12 +22,34 @@ function Posts() {
     fetchPosts(); 
   }, [])
 
+  function postMatches(post, text) {
+    return(
+      post.title.toLowerCase().includes(text.toLowerCase()) || post.description.toLowerCase().includes(text.toLowerCase()) || post.author.username.toLowerCase().includes(text.toLowerCase())
+
+
+    )
+  }
+
+  const filteredPosts = posts.filter((post) => postMatches(post, searchTerm));
+  const postsToDisplay = searchTerm.length ? filteredPosts : posts;
+
   return (
     <>
     <Link to="/register">Register</Link>
     <Link to="/login">Login</Link>
+    <form>
+        <label>
+          Search 
+          <input 
+            value ={searchTerm} 
+            onChange={(event) => setSearchTerm(event.target.value)}
+            required
+          />
+        </label>
+    </form>
       {
-        posts.map((post) => {
+        postsToDisplay.map((post) => {
+          console.log(post)
          return <div key={post._id}>
             <h2>{post.title}</h2>
             <h3>{post.description}</h3>

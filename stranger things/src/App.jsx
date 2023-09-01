@@ -23,7 +23,6 @@ function App() {
   
   return (
     <>
-    {console.log(postId)}
     <Routes>
       <Route path="/" element={<Posts />}/>
       <Route path="/register" element={<Register />}/>

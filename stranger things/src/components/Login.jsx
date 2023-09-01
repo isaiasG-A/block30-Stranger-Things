@@ -12,7 +12,7 @@ async function loginRequest(event) {
   event.preventDefault();
 
   const COHORT_NAME = '2302-ACC-PT-WEB-PT-D';
-  const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
+  const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
   try {
     const response = await fetch(`${BASE_URL}/users/login`, {
       method: "POST",
@@ -34,7 +34,6 @@ async function loginRequest(event) {
 
     error ? setResponse(error) : setResponse(result.data.message); 
     token ? navigate("/usermenu") : null;
-    console.log(result)
   } catch(error) {
 console.log(error)  }
 }
